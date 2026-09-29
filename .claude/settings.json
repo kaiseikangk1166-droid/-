@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "IFS=$'\\t' read -r n e < <(git log --pretty='%an%x09%ae' | grep -vi anthropic | head -1); [ -n \"$e\" ] && git config user.name \"$n\" && git config user.email \"$e\""
+          }
+        ]
+      }
+    ]
+  }
+}
